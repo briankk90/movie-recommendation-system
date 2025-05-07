@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-recommendation-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: movie-recommendation
+  template:
+    metadata:
+      labels:
+        app: movie-recommendation
+    spec:
+      containers:
+      - name: movie-recommendation
+        image: movie-recommendation-image:latest
+        ports:
+        - containerPort: 8000
